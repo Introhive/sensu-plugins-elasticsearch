@@ -101,6 +101,7 @@ class ESCircuitBreaker < Sensu::Plugin::Check::CLI
         else
           RestClient::Resource.new("#{protocol}://#{config[:host]}:#{config[:port]}#{resource}",
                                    timeout: config[:timeout],
+                                   verify_ssl: false,
                                    headers: headers)
         end
     JSON.parse(r.get)

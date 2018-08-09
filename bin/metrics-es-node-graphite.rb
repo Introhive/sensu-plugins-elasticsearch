@@ -140,6 +140,7 @@ class ESNodeGraphiteMetrics < Sensu::Plugin::Metric::CLI::Graphite
         else
           RestClient::Resource.new("#{protocol}://#{config[:server]}:#{config[:port]}#{resource}?pretty",
                                    timeout: config[:timeout],
+                                   verify_ssl: false,
                                    headers: headers)
         end
     JSON.parse(r.get)
